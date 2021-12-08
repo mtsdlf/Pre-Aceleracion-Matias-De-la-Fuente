@@ -1,0 +1,817 @@
+{
+	"info": {
+		"_postman_id": "97f1565a-f8ef-412d-91f9-5643473bdb5c",
+		"name": "Disney",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mts.dlf@gmail.com\",\r\n    \"password\": \"alkemy123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "mts.dlf@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "alkemy123",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mts.dlf@gmail.com\",\r\n    \"password\": \"alkemy123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "/genres",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fantasy\",\r\n    \"imagePath\": \"../assets/img/genres/img_001.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/genres/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/genres/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/genres/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/genres/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/genres/{id}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Science-Fiction\",\r\n    \"imagePath\": \"../assets/img/genres/img_002.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/genres/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/genres/{id}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/genres/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"genres",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "/movies",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cinderella\",\r\n    \"rating\": 4,\r\n    \"releaseDate\": \"1975-12-01\",\r\n    \"genreId\": \"2\",\r\n    \"imagePath\": \"../assets/img/img_001.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/?filter=value",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies?name=cinderella&genre=2&order=asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "cinderella"
+								},
+								{
+									"key": "genre",
+									"value": "2"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/{id}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Alladin\",\r\n    \"rating\": 5,\r\n    \"releaseDate\": \"1995-01-12\",\r\n    \"genreId\": \"2\",\r\n    \"imagePath\": \"../assets/img/img_002.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/{id}/characters/{characterId}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTAyOTQ1OSwiaWF0IjoxNjM4OTkzNDU5fQ.GFI4ct6M4KgEW8u2wnWDzs_Hr96CUzZbbQAPlA3JJvo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/3/characters/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"3",
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/{id}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Characters",
+			"item": [
+				{
+					"name": "/characters",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cinderella\",\r\n    \"age\": 14,\r\n    \"weight\": 26,\r\n    \"description\": \"One upon a time...\",\r\n    \"imagePath\": \"../assets/img/characters/img_002.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/characters/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/characters/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/characters/?filter=value",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters?moviesId=3&name=cinderella",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "age",
+									"value": "14",
+									"disabled": true
+								},
+								{
+									"key": "moviesId",
+									"value": "3"
+								},
+								{
+									"key": "name",
+									"value": "cinderella"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/characters/{id}",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Snow White\",\r\n    \"age\": 26,\r\n    \"weight\": 68,\r\n    \"description\": \"And one day...\",\r\n    \"imagePath\": \"../assets/img/characters/img_003.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/characters/{id} Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdHMuZGxmQGdtYWlsLmNvbSIsImV4cCI6MTYzOTA0MTIxNiwiaWF0IjoxNjM5MDA1MjE2fQ.i84VgXpd7zDNhjMcwFD2BvNOinMsBtMlEW-KTw-mLx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cinderella\",\r\n    \"rating\": 4,\r\n    \"releaseDate\": \"1975-12-01\",\r\n    \"genreId\": \"2\",\r\n    \"imagePath\": \"../assets/img/img_001.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/characters/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
