@@ -1,7 +1,5 @@
 package com.mdelafuente.alkemy.disney.mapper;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,9 +9,9 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mdelafuente.alkemy.disney.dto.MovieDTO;
 import com.mdelafuente.alkemy.disney.dto.CharacterBasicDTO;
 import com.mdelafuente.alkemy.disney.dto.CharacterDTO;
+import com.mdelafuente.alkemy.disney.dto.MovieDTO;
 import com.mdelafuente.alkemy.disney.entity.CharacterEntity;
 
 @Component
@@ -23,38 +21,34 @@ public class CharacterMapper {
 	private MovieMapper movieMapper;
 	
 	public void characterEntityRefreshValues(CharacterEntity entity, CharacterDTO dto) {
-		entity.setTitle(dto.getTitle());
+		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
-		entity.setHeight(dto.getHeight());
-		entity.setBuildingDate(
-				this.stringToLocalDate(dto.getBuildingDate())
-		);
+		entity.setWeight(dto.getWeight());
+		entity.setAge(dto.getAge());
 	}
 	
 	public CharacterEntity characterDTO2Entity(CharacterDTO dto) {
 			CharacterEntity entity = new CharacterEntity();
-			entity.setTitle(dto.getTitle());
+			entity.setName(dto.getName());
 			entity.setDescription(dto.getDescription());
-			entity.setHeight(dto.getHeight());
-			entity.setBuildingDate(
-					this.stringToLocalDate(dto.getBuildingDate())
-					);
-			entity.setImageUrl(dto.getImageUrl());
+			entity.setWeight(dto.getWeight());
+			entity.setAge(dto.getAge());
+			entity.setImagePath(dto.getImagePath());
 			return entity;
 	}
 	
 	public CharacterDTO characterEntity2DTO(CharacterEntity entity, boolean loadMovies) {
 		CharacterDTO dto = new CharacterDTO();
 		dto.setId(entity.getId());
-		dto.setTitle(entity.getTitle());
+		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
-		dto.setHeight(entity.getHeight());
-		dto.setBuildingDate(entity.getBuildingDate().toString());
+		dto.setWeight(entity.getWeight());
+		dto.setAge(entity.getAge());
 		if (loadMovies) {
 			List<MovieDTO> moviesDTOS = this.movieMapper.moviesEntityList2DTOList(entity.getMovies(), false);
 			dto.setMovies(moviesDTOS);
 		} 
-		dto.setImageUrl(entity.getImageUrl());
+		dto.setImagePath(entity.getImagePath());
 		return dto;
 	}
 	
@@ -85,17 +79,11 @@ public class CharacterMapper {
 		for (CharacterEntity entity : entities) {
 			basicDTO = new CharacterBasicDTO();
 			basicDTO.setId(entity.getId());
-			basicDTO.setTitle(entity.getTitle());
-			basicDTO.setImageUrl(entity.getImageUrl());
+			basicDTO.setName(entity.getName());
+			basicDTO.setImagePath(entity.getImagePath());
 			dtos.add(basicDTO);
 		}
 		return dtos;
-	}
-	
-	private LocalDate stringToLocalDate(String stringDate) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate date = LocalDate.parse(stringDate, formatter);
-		return date;
 	}
 
 }

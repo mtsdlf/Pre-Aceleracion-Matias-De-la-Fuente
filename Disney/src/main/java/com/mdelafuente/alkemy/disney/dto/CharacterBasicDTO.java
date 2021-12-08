@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CharacterBasicDTO {
 	private Long id;
-	private String title;
-	private String imageUrl;
+	private String name;
+	private String imagePath;
 	
 }

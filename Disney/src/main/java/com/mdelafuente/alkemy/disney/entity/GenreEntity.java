@@ -15,8 +15,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "continents")
-@SQLDelete(sql= "UPDATE continents SET deleted = true WHERE id=?")
+@Table(name = "GENRE")
+@SQLDelete(sql= "UPDATE GENRE SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class GenreEntity {
 	
@@ -25,10 +25,10 @@ public class GenreEntity {
 	private Long id;
 	
 	@NotBlank
-	private String title;
+	private String name;
 	
-	@Column(name = "image_url")
-	private String imageUrl;
+	@Column(name = "image_path")
+	private String imagePath;
 	
 	private boolean deleted = Boolean.FALSE;
 	

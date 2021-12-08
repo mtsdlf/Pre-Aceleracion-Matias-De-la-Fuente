@@ -10,5 +10,5 @@ import lombok.Setter;
 	public class MovieBasicDTO {
 	private Long id;
 	private String title;
-	private String imageUrl;
+	private String imagePath;
 }

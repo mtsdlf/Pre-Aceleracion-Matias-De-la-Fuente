@@ -1,6 +1,5 @@
 package com.mdelafuente.alkemy.disney.entity;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +12,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "character")
-@SQLDelete(sql= "UPDATE character SET deleted = true WHERE id=?")
+@Table(name = "CHARACTER")
+@SQLDelete(sql= "UPDATE CHARACTER SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class CharacterEntity {		
 
@@ -31,22 +30,21 @@ public class CharacterEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	private String title;
+	private String name;
 	
 	private String description;
 	
-	@Column(name = "height_in_m")
-	private Long height;
+	@Positive
+	private Long weight;
 	
-	@Column(name = "building_date")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate buildingDate;
+	@Positive
+	private Integer age;
 	
 	@ManyToMany(mappedBy = "characters", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
 	private List<MovieEntity> movies = new ArrayList<>();
 	
-	@Column(name = "image_url")
-	private String imageUrl;
+	@Column(name = "image_path")
+	private String imagePath;
 	
 	private boolean deleted = Boolean.FALSE;
 

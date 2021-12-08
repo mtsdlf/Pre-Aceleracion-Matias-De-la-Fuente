@@ -1,5 +1,7 @@
 package com.mdelafuente.alkemy.disney.mapper;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import com.mdelafuente.alkemy.disney.dto.CharacterDTO;
 import com.mdelafuente.alkemy.disney.dto.MovieBasicDTO;
 import com.mdelafuente.alkemy.disney.dto.MovieDTO;
-import com.mdelafuente.alkemy.disney.dto.CharacterDTO;
 import com.mdelafuente.alkemy.disney.entity.MovieEntity;
 
 @Component
@@ -27,18 +29,22 @@ public class MovieMapper {
 
 	public void movieEntityRefreshValues(MovieEntity entity, MovieDTO dto) {
 		entity.setTitle(dto.getTitle());
-		entity.setPopulation(dto.getPopulation());
-		entity.setArea(dto.getArea());
+		entity.setReleaseDate(
+				this.stringToLocalDate(dto.getReleaseDate())
+		);
+		entity.setRating(dto.getRating());
 		entity.setGenreId(dto.getGenreId());
-		entity.setImageUrl(dto.getImageUrl());
+		entity.setImagePath(dto.getImagePath());
 	}
 	
 	public MovieEntity movieDTO2Entity(MovieDTO dto) {
 			MovieEntity movieEntity = new MovieEntity();
 			movieEntity.setTitle(dto.getTitle());
-			movieEntity.setPopulation(dto.getPopulation());
-			movieEntity.setArea(dto.getArea());
-			movieEntity.setImageUrl(dto.getImageUrl());
+			movieEntity.setReleaseDate(
+					this.stringToLocalDate(dto.getReleaseDate())
+			);
+			movieEntity.setRating(dto.getRating());
+			movieEntity.setImagePath(dto.getImagePath());
 			movieEntity.setGenreId(dto.getGenreId());
 			return movieEntity;
 	}
@@ -47,14 +53,14 @@ public class MovieMapper {
 		MovieDTO dto = new MovieDTO();
 		dto.setId(entity.getId());
 		dto.setTitle(entity.getTitle());
-		dto.setPopulation(entity.getPopulation());
-		dto.setArea(entity.getArea());
+		dto.setReleaseDate(entity.getReleaseDate().toString());
+		dto.setRating(entity.getRating());
 		if(loadCharacters) {
 			List<CharacterDTO> characterDTOS = this.characterMapper.characterEntitySet2DTOList(entity.getCharacters(), loadCharacters);
 			dto.setCharacters(characterDTOS);
 		}
 		
-		dto.setImageUrl(entity.getImageUrl());
+		dto.setImagePath(entity.getImagePath());
 		dto.setGenreId(entity.getGenreId());
 		return dto;
 	}
@@ -86,10 +92,17 @@ public class MovieMapper {
 			basicDTO = new MovieBasicDTO();
 			basicDTO.setId(entity.getId());
 			basicDTO.setTitle(entity.getTitle());
-			basicDTO.setImageUrl(entity.getImageUrl());
+			basicDTO.setImagePath(entity.getImagePath());
 			dtos.add(basicDTO);
 		}
 		return dtos;
+	}
+	
+	
+	private LocalDate stringToLocalDate(String stringDate) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date = LocalDate.parse(stringDate, formatter);
+		return date;
 	}
 
 }

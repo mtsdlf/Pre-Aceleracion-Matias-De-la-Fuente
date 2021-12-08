@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MovieFiltersDTO {
 	private String name;
-	private Long continent;
+	private Long genre;
 	private String order;
 	
 	public boolean isAsc() {

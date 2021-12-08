@@ -1,5 +1,6 @@
 package com.mdelafuente.alkemy.disney.entity;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,18 +16,20 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "movies")
-@SQLDelete(sql= "UPDATE movies SET deleted = true WHERE id=?")
+@Table(name = "MOVIE")
+@SQLDelete(sql= "UPDATE MOVIE SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class MovieEntity {
 	
@@ -37,22 +40,23 @@ public class MovieEntity {
 	@NotBlank
 	private String title;
 	
-	@Positive
-	private Long population;
+	@Column(name = "release_date")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private LocalDate releaseDate;
 	
 	@Positive
-	@Column(name = "area_in_m2")
-	private Long area; //m2
+	@Max(5)
+	private Integer rating;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "continent_id", insertable = false, updatable = false)
-	private GenreEntity continent;
+	@JoinColumn(name = "genre_id", insertable = false, updatable = false)
+	private GenreEntity genre;
 	
-	@Column(name = "continent_id", nullable = false)
-	private Long continentId;
+	@Column(name = "genre_id", nullable = false)
+	private Long genreId;
 	
-	@Column(name = "image_url")
-	private String imageUrl;
+	@Column(name = "image_path")
+	private String imagePath;
 	
 	private boolean deleted = Boolean.FALSE;
 	
@@ -63,9 +67,9 @@ public class MovieEntity {
 		}
 	)
 	@JoinTable(
-			name = "characters_movies",
-			joinColumns = @JoinColumn(name = "characters_id", referencedColumnName="id"),
-			inverseJoinColumns = @JoinColumn(name = "movies_id", referencedColumnName="id")
+			name = "character_movie",
+			joinColumns = @JoinColumn(name = "character_id", referencedColumnName="id"),
+			inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName="id")
 	)
 	private Set<CharacterEntity> characters = new HashSet<CharacterEntity>();
 

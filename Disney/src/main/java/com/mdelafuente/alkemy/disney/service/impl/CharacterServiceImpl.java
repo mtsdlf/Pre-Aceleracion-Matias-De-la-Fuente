@@ -48,7 +48,7 @@ public class CharacterServiceImpl implements CharacterService{
 	public CharacterEntity getEntityById(Long id) {
 		Optional<CharacterEntity> entity = characterRepository.findById(id);
 		if (!entity.isPresent()) {
-			throw new ParamNotFound("id character not valid");
+			throw new ParamNotFound("Character ID not valid");
 		}
 		CharacterEntity result = entity.get();
 		return result;
@@ -96,7 +96,7 @@ public class CharacterServiceImpl implements CharacterService{
 	public void delete(Long id) {
 		Optional<CharacterEntity> entity = this.characterRepository.findById(id);
 		if (entity.isPresent()) {
-			throw new ParamNotFound("character id not valid");
+			throw new ParamNotFound("Character id not valid");
 		}
 		this.characterRepository.deleteById(id);
 	}

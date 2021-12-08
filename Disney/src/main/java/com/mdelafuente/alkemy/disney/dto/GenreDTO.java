@@ -10,7 +10,7 @@ import lombok.Setter;
 public class GenreDTO {
 	private Long id;
 	@NotEmpty
-	private String title;
-	private String imageUrl;
+	private String name;
+	private String imagePath;
 
 }
