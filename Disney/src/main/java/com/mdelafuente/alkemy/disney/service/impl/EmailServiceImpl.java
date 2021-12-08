@@ -22,17 +22,17 @@ public class EmailServiceImpl implements EmailService{
 	@Autowired
 	private Environment env;
 	
-	@Value("{$alkemy.icons.email.sender}")
+	@Value("${alkemy.icons.email.sender}")
 	private String emailSender;
 	
-	/*@Value("{$alkemy.icons.email.enabled}")
-	private boolean enabled;*/
+	@Value("${alkemy.icons.email.enabled}")
+	private boolean enabled;
 
 	@Override
 	public void sendWelcomeEmailTo(String to) {
-		/*if (!enabled) {
+		if (!enabled) {
 			return;
-		}*/
+		}
 		String apiKey = env.getProperty("EMAIL_API_KEY");
 		
 		Email fromEmail = new Email(emailSender);
