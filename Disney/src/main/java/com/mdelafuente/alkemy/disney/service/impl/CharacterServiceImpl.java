@@ -64,8 +64,8 @@ public class CharacterServiceImpl implements CharacterService{
 		return characterDTO;
 	}
 	
-	@Override public List<CharacterDTO> getByFilters(String name, String date, Set<Long> movies, String order) { 
-		CharacterFiltersDTO filtersDTO = new CharacterFiltersDTO(name, date, movies);
+	@Override public List<CharacterDTO> getByFilters(String name, Integer age, Set<Long> movies) { 
+		CharacterFiltersDTO filtersDTO = new CharacterFiltersDTO(name, age, movies);
 		List<CharacterEntity> entities = this.characterRepository.findAll(this.characterSpecification.getByFilters(filtersDTO));
 		List<CharacterDTO> dtos = this.characterMapper.characterEntitySet2DTOList(entities, true);
 		return dtos;
@@ -95,7 +95,7 @@ public class CharacterServiceImpl implements CharacterService{
 	@Override
 	public void delete(Long id) {
 		Optional<CharacterEntity> entity = this.characterRepository.findById(id);
-		if (entity.isPresent()) {
+		if (!entity.isPresent()) {
 			throw new ParamNotFound("Character id not valid");
 		}
 		this.characterRepository.deleteById(id);

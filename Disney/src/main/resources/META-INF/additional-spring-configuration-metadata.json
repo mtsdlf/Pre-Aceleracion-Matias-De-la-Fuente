@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "alkemy.icons.email.enabled",
+    "type": "java.lang.Boolean",
+    "description": "Used by SendGrid"
+  },
+  {
+    "name": "alkemy.icons.email.sender",
+    "type": "java.lang.String",
+    "description": "Used by SendGrid"
+  }
+]}

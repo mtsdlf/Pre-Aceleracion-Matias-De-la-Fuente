@@ -1,9 +1,8 @@
  package com.mdelafuente.alkemy.disney.repository.specification;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
@@ -30,20 +29,15 @@ public class CharacterSpecification {
 			if (StringUtils.hasLength(filtersDTO.getName())) {
 				predicates.add(
 						criteriaBuilder.like(
-								criteriaBuilder.lower(root.get("title")),
+								criteriaBuilder.lower(root.get("name")),
 										"%" + filtersDTO.getName().toLowerCase() + "%"
 						) 
 				);	
 			}
 			
-			if (StringUtils.hasLength(filtersDTO.getDate())) {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-				LocalDate date = LocalDate.parse(filtersDTO.getDate(), formatter);
+			if (!Objects.isNull(filtersDTO.getAge())) {
 				predicates.add(
-						criteriaBuilder.equal(
-								root.<LocalDate>get("buildingDate"), 
-								date
-						)
+						criteriaBuilder.equal(root.get("age"), filtersDTO.getAge())
 				);
 			}
 			

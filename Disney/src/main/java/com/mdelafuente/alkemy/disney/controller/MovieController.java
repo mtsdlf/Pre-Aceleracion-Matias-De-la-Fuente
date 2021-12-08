@@ -40,7 +40,8 @@ public class MovieController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<MovieDTO> getDetailsById(
-			@Valid @PathVariable Long id) {
+			@Valid @PathVariable Long id
+	) {
 		MovieDTO movie = this.movieService.getDetailsById(id);
 		return ResponseEntity.ok(movie);
 	}	
@@ -48,24 +49,26 @@ public class MovieController {
 	@GetMapping
 	public ResponseEntity<List<MovieDTO>> getDetailsByFilters(
 			@Valid @RequestParam(required = false) String name, 
-			@Valid @RequestParam(required = false) Long continent,
+			@Valid @RequestParam(required = false) Long genre,
 			@Valid @RequestParam(required = false, defaultValue = "ASC") String order
 	) {
-		List<MovieDTO> movies = this.movieService.getByFilters(name, continent, order); 
+		List<MovieDTO> movies = this.movieService.getByFilters(name, genre, order); 
 		return ResponseEntity.ok(movies);
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<MovieDTO> update (
 			@Valid @PathVariable Long id,
-			@RequestBody MovieDTO movie) {
+			@Valid @RequestBody MovieDTO movie
+	) {
 		MovieDTO result = this.movieService.update(id, movie);
 		return ResponseEntity.ok(result);
 	}	
 	
 	@PostMapping
 	public ResponseEntity<MovieDTO> save(
-			@Valid @RequestBody MovieDTO movie) {
+			@Valid @RequestBody MovieDTO movie
+	) {
 		MovieDTO result = movieService.save(movie);
 		return ResponseEntity.status(HttpStatus.CREATED).body(result);
 	}
@@ -73,7 +76,8 @@ public class MovieController {
 	@PostMapping("/{id}/characters/{idCharacter}")
 	public ResponseEntity<Void> addCharacter(
 			@Valid @PathVariable Long id, 
-			@PathVariable Long idCharacter){
+			@PathVariable Long idCharacter
+	){
 		this.movieService.addCharacter(id, idCharacter);
 		return ResponseEntity.status(HttpStatus.CREATED).build();	
 	}
@@ -81,14 +85,16 @@ public class MovieController {
 	@DeleteMapping("/{id}/characters/{idCharacter}")
 	public ResponseEntity<Void> delete(
 			@Valid @PathVariable Long id, 
-			@Valid @PathVariable Long idCharacter) {
+			@Valid @PathVariable Long idCharacter
+	) {
 		this.movieService.removeCharacter(id, idCharacter);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(
-			@Valid @PathVariable Long id) {
+			@Valid @PathVariable Long id
+	) {
 		this.movieService.delete(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

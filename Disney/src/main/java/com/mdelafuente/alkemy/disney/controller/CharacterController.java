@@ -48,28 +48,34 @@ public class CharacterController {
 	@GetMapping
 	public ResponseEntity<List<CharacterDTO>> getDetailsByFilters(
 			@Valid @RequestParam(required = false) String name, 
-			@Valid @RequestParam(required = false) String date,
-			@RequestParam(required = false) Set<Long> movies,
-			@Valid @RequestParam(required = false, defaultValue = "ASC") String order
+			@Valid @RequestParam(required = false) Integer age,
+			@RequestParam(required = false) Set<Long> idMovies
 	) {
-		List<CharacterDTO> characters = this.characterService.getByFilters(name, date, movies, order); 
+		List<CharacterDTO> characters = this.characterService.getByFilters(name, age, idMovies); 
 		return ResponseEntity.ok(characters);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<CharacterDTO> update (@Valid @PathVariable Long id, @RequestBody CharacterDTO character) {
+	public ResponseEntity<CharacterDTO> update (
+			@Valid @PathVariable Long id, 
+			@RequestBody CharacterDTO character
+	) {
 		CharacterDTO result = this.characterService.update(id, character);;
 		return ResponseEntity.ok(result);
 	}
 	 
 	@PostMapping
-	public ResponseEntity<CharacterDTO> save(@Valid @RequestBody CharacterDTO character) {
+	public ResponseEntity<CharacterDTO> save(
+			@Valid @RequestBody CharacterDTO character
+	) {
 		CharacterDTO result = this.characterService.save(character);
 		return ResponseEntity.status(HttpStatus.CREATED).body(result);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@Valid @PathVariable Long id) {
+	public ResponseEntity<Void> delete(
+			@Valid @PathVariable Long id
+	) {
 		this.characterService.delete(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}

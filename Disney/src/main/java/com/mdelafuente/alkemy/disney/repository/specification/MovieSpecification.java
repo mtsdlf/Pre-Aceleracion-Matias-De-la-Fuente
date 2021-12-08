@@ -30,10 +30,9 @@ public class MovieSpecification {
 						) 
 				);	
 			}
-			
 			if (!Objects.isNull(filtersDTO.getGenre())) {
 				predicates.add(
-						criteriaBuilder.equal(root.get("continent"), filtersDTO.getGenre())
+						criteriaBuilder.equal(root.get("genre"), filtersDTO.getGenre())
 				);	
 			}
 			

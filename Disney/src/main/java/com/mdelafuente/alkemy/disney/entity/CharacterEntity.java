@@ -21,8 +21,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "CHARACTER")
-@SQLDelete(sql= "UPDATE CHARACTER SET deleted = true WHERE id=?")
+@Table(name = "characters")
+@SQLDelete(sql = "UPDATE characters SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class CharacterEntity {		
 

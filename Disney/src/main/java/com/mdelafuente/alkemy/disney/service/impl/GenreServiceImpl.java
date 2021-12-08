@@ -66,7 +66,11 @@ public class GenreServiceImpl implements GenreService{
 	
 	@Override
 	public void delete(Long id) {
-		this.genreRepository.deleteById(id);	
+		Optional<GenreEntity> entity = this.genreRepository.findById(id);
+		if (!entity.isPresent()) {
+			throw new ParamNotFound("Genre ID not valid");
+		}
+		this.genreRepository.deleteById(id);
 	}
 
 }

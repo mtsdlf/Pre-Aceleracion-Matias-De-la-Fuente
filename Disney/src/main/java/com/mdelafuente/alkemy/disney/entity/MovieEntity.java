@@ -28,8 +28,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "MOVIE")
-@SQLDelete(sql= "UPDATE MOVIE SET deleted = true WHERE id=?")
+@Table(name = "movies")
+@SQLDelete(sql= "UPDATE movies SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class MovieEntity {
 	
@@ -67,9 +67,9 @@ public class MovieEntity {
 		}
 	)
 	@JoinTable(
-			name = "character_movie",
-			joinColumns = @JoinColumn(name = "character_id", referencedColumnName="id"),
-			inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName="id")
+			name = "characters_movies",
+			joinColumns = @JoinColumn(name = "characters_id", referencedColumnName="id"),
+			inverseJoinColumns = @JoinColumn(name = "movies_id", referencedColumnName="id")
 	)
 	private Set<CharacterEntity> characters = new HashSet<CharacterEntity>();
 

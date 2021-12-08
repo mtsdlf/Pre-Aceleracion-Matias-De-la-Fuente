@@ -15,8 +15,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "GENRE")
-@SQLDelete(sql= "UPDATE GENRE SET deleted = true WHERE id=?")
+@Table(name = "genres")
+@SQLDelete(sql= "UPDATE genres SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
 public class GenreEntity {
 	

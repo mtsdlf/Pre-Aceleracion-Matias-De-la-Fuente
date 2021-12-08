@@ -105,7 +105,11 @@ public class MovieServiceImpl implements MovieService{
 	
 	@Override
 	public void delete(Long id) {
-		this.movieRepository.deleteById(id);	
+		Optional<MovieEntity> entity = this.movieRepository.findById(id);
+		if (!entity.isPresent()) {
+			throw new ParamNotFound("Movie ID not valid");
+		}
+		this.movieRepository.deleteById(id);
 	}
 
 }

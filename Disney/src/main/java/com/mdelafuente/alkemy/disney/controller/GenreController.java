@@ -20,7 +20,7 @@ import com.mdelafuente.alkemy.disney.dto.GenreDTO;
 import com.mdelafuente.alkemy.disney.service.GenreService;
 
 @RestController
-@RequestMapping("continents")
+@RequestMapping("genres")
 public class GenreController {
 	
 	private GenreService genreService;
