@@ -29,7 +29,7 @@ public class GenreServiceImpl implements GenreService{
 	@Override
 	public List<GenreDTO> getAll() {
 		List<GenreEntity> entities = genreRepository.findAll();
-		List<GenreDTO> result = genreMapper.continentEntityList2DTOList(entities);
+		List<GenreDTO> result = genreMapper.genreEntityList2DTOList(entities);
 		return result;
 	}
 
@@ -39,7 +39,7 @@ public class GenreServiceImpl implements GenreService{
 		if (!entity.isPresent()) {
 			throw new ParamNotFound("continent id not valid");
 		}
-		GenreDTO genreDTO = this.genreMapper.continentEntity2DTO(entity.get());
+		GenreDTO genreDTO = this.genreMapper.genreEntity2DTO(entity.get());
 		return genreDTO;
 	}
 	
@@ -49,18 +49,18 @@ public class GenreServiceImpl implements GenreService{
 		if (!oldEntity.isPresent()) {
 			throw new ParamNotFound("character id not valid");
 		}
-		GenreEntity newEntity = genreMapper.continentDTO2Entity(continent);
+		GenreEntity newEntity = genreMapper.genreDTO2Entity(continent);
 		newEntity.setId(oldEntity.get().getId());
 		GenreEntity entitySaved = genreRepository.save(newEntity);
-		GenreDTO result = genreMapper.continentEntity2DTO(entitySaved);
+		GenreDTO result = genreMapper.genreEntity2DTO(entitySaved);
 		return result;
 	}
 	
 	@Override
 	public GenreDTO save(GenreDTO dto) {
-		GenreEntity entity = genreMapper.continentDTO2Entity(dto);
+		GenreEntity entity = genreMapper.genreDTO2Entity(dto);
 		GenreEntity entitySaved = genreRepository.save(entity);
-		GenreDTO result = genreMapper.continentEntity2DTO(entitySaved);
+		GenreDTO result = genreMapper.genreEntity2DTO(entitySaved);
 		return result;
 	}
 	
