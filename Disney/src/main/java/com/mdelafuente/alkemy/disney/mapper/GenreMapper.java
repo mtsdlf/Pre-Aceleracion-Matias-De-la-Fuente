@@ -11,14 +11,14 @@ import com.mdelafuente.alkemy.disney.entity.GenreEntity;
 @Component
 public class GenreMapper {
 	
-	public GenreEntity continentDTO2Entity(GenreDTO dto) {
+	public GenreEntity movieDTO2Entity(GenreDTO dto) {
 			GenreEntity genreEntity = new GenreEntity();
 			genreEntity.setName(dto.getName());
 			genreEntity.setImagePath(dto.getImagePath());
 			return genreEntity;
 	}
 
-	public GenreDTO continentEntity2DTO(GenreEntity entity) {
+	public GenreDTO movieEntity2DTO(GenreEntity entity) {
 		GenreDTO dto = new GenreDTO();
 		dto.setId(entity.getId());
 		dto.setName(entity.getName());
@@ -26,10 +26,10 @@ public class GenreMapper {
 		return dto;
 	}
 
-	public List<GenreDTO> continentEntityList2DTOList(List<GenreEntity> entities) {
+	public List<GenreDTO> movieEntityList2DTOList(List<GenreEntity> entities) {
 		List<GenreDTO> dtos = new ArrayList<>();
 		for (GenreEntity entity : entities) {
-			dtos.add(this.continentEntity2DTO(entity));
+			dtos.add(this.movieEntity2DTO(entity));
 		}
 		return dtos;
 	}
